@@ -6,15 +6,16 @@
  */
 public class Casilla {
     private int posFila;
-    private int posColum;
+    private int posColumna;
     private boolean mina;
     private int numMinasAlrededor;
+    private boolean abierta;
 
-    public Casilla(int posFila, int posColum) {
+    public Casilla(int posFila, int posColumna) {
         this.posFila = posFila;
-        this.posColum = posColum;
+        this.posColumna = posColumna;
     }
-    
+
     public int getPosFila() {
         return posFila;
     }
@@ -23,12 +24,12 @@ public class Casilla {
         this.posFila = posFila;
     }
 
-    public int getPosColum() {
-        return posColum;
+    public int getPosColumna() {
+        return posColumna;
     }
 
-    public void setPosColum(int posColum) {
-        this.posColum = posColum;
+    public void setPosColumna(int posColumna) {
+        this.posColumna = posColumna;
     }
 
     public boolean isMina() {
@@ -47,7 +48,15 @@ public class Casilla {
         this.numMinasAlrededor = numMinasAlrededor;
     }
     
-    public void incrementarNumeroMinasAlrededor() {
+    public void incrementarNumeroMinasAlrededor(){
         this.numMinasAlrededor++;
+    }
+
+    public boolean isAbierta() {
+        return abierta;
+    }
+
+    public void setAbierta(boolean abierta) {
+        this.abierta = abierta;
     }
 }

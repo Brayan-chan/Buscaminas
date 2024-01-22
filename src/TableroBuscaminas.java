@@ -1,3 +1,7 @@
+
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  *
  * @author Brayan Chan
@@ -38,6 +42,7 @@ public class TableroBuscaminas {
                 minasGeneradas++;
             }
         }
+        actualizarNumeroMinasAlrededor();
     }
     
     private void imprimirTablero() {
@@ -49,9 +54,54 @@ public class TableroBuscaminas {
         }
     }
     
+    private void imprimirPistas() {
+        for (int i = 0; i < casillas.length; i++) {
+            for (int j = 0; j < casillas[i].length; j++) {
+                System.out.print(casillas[i][j].getNumMinasAlrededor());
+            }
+            System.out.println("");
+        }
+    }
+    
+    private void actualizarNumeroMinasAlrededor() {
+        for (int i = 0; i < casillas.length; i++) {
+            for (int j = 0; j < casillas[i].length; j++) {
+                if (casillas[i][j].isMina()) {
+                    List<Casilla> casillasAlrededor = obtenerCasillasAlrededor(i, j);
+                    casillasAlrededor.forEach((c)->c.incrementarNumeroMinasAlrededor());
+                }
+            }
+        }
+    }
+    
+    private List<Casilla> obtenerCasillasAlrededor(int posFila, int posColum) {
+        List<Casilla> listaCasillas = new LinkedList<>();
+        for (int i = 0; i < 8; i++) {
+            int tmpPosFila = posFila;
+            int tmpPosColum = posColum;
+            switch (i) {
+                case 0: tmpPosFila--;break; //Arriba
+                case 1: tmpPosFila--;tmpPosColum++;break; //Arriba Derecha
+                case 2: tmpPosColum++;break; //Derecha
+                case 3: tmpPosColum++;tmpPosFila++;break; //Derecha Abajo
+                case 4: tmpPosFila++;break; //Abajo
+                case 5: tmpPosFila++;tmpPosColum--;break; //Abajo Izquierda
+                case 6: tmpPosColum--;break; //Izquierda
+                case 7: tmpPosColum--;tmpPosFila--;break; //Izquierda Arriba
+            }
+            if(tmpPosFila >= 0 && tmpPosFila<this.casillas.length
+                    && tmpPosColum >= 0 && tmpPosColum<this.casillas[0].length) {
+                listaCasillas.add(this.casillas[tmpPosFila][tmpPosColum]);
+            }
+        }
+        return listaCasillas;
+    }
+    
     public static void main(String[] args) {
         // 6 = numero de columnas y filas, 5 = numero de minas 
-        TableroBuscaminas tablero = new TableroBuscaminas(6, 10, 15);
+        TableroBuscaminas tablero = new TableroBuscaminas(5, 5, 5);
         tablero.imprimirTablero();
+        System.out.println("---");
+        tablero.imprimirPistas();
     }
 }

@@ -151,8 +151,6 @@ public class TableroBuscaminas {
         return numCasillasAbiertas>=(numFilas*numColumnas)-numMinas;
     }
     
-    
-    
     public static void main(String[] args) {
         TableroBuscaminas tablero=new TableroBuscaminas(5, 5, 5);
         tablero.imprimirTablero();

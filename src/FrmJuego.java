@@ -48,6 +48,7 @@ public class FrmJuego extends javax.swing.JFrame {
         descargarControles();
         cargarControles();
         crearTableroBuscaminas();
+        //Refrescar los graficos con repaint
         repaint();
     }
     
@@ -145,7 +146,46 @@ public class FrmJuego extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        menuNuevoJuego = new javax.swing.JMenuItem();
+        menuTamano = new javax.swing.JMenuItem();
+        menuNumMinas = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu1.setText("Juego");
+
+        menuNuevoJuego.setText("Nuevo");
+        menuNuevoJuego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNuevoJuegoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuNuevoJuego);
+
+        menuTamano.setText("Tamaño");
+        menuTamano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTamanoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuTamano);
+
+        menuNumMinas.setText("Minas");
+        menuNumMinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNumMinasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuNumMinas);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,11 +195,28 @@ public class FrmJuego extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 277, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuNuevoJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoJuegoActionPerformed
+        juegoNuevo();
+    }//GEN-LAST:event_menuNuevoJuegoActionPerformed
+
+    private void menuTamanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTamanoActionPerformed
+        int num = Integer.parseInt(JOptionPane.showInputDialog("Digite el tamnno de la matriz, n*n"));
+        this.numFilas = num;
+        this.numColumnas = num;
+        juegoNuevo();
+    }//GEN-LAST:event_menuTamanoActionPerformed
+
+    private void menuNumMinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNumMinasActionPerformed
+        int num = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de minas"));
+        this.numMinas = num;
+        juegoNuevo();
+    }//GEN-LAST:event_menuNumMinasActionPerformed
  
     /**
      * @param args the command line arguments
@@ -197,5 +254,11 @@ public class FrmJuego extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem menuNuevoJuego;
+    private javax.swing.JMenuItem menuNumMinas;
+    private javax.swing.JMenuItem menuTamano;
     // End of variables declaration//GEN-END:variables
 }

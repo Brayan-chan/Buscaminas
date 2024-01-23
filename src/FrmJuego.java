@@ -1,4 +1,7 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +24,7 @@ public class FrmJuego extends javax.swing.JFrame {
      */
     public FrmJuego() {
         initComponents();
+        cargarControles();
         //juegoNuevo();
     }
     
@@ -41,15 +45,36 @@ public class FrmJuego extends javax.swing.JFrame {
                 if (i==0 && j==0){
                   botonesTablero[i][j].setBounds(posXReferencia, 
                           posYReferencia, anchoControl, altoControl);  
-                }else if (i==0 && j!=0) {
+                } else if (i==0 && j!=0) {
                     botonesTablero[i][j].setBounds(
                             botonesTablero[i][j-1].getX()+botonesTablero[i][j-1].getWidth(), 
                             posYReferencia, anchoControl, altoControl);
+                } else {
+                    botonesTablero[i][j].setBounds(
+                            botonesTablero[i-1][j].getX(), 
+                            botonesTablero[i-1][j].getY()+botonesTablero[i-1][j].getHeight(),
+                            anchoControl, altoControl);
                 }
+                //Agregando eventos al boton
+                botonesTablero[i][j].addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        btnClick(e);
+                    }
+                });
                 getContentPane().add(botonesTablero[i][j]);
             }
         }
-        
+    }
+    
+    private void btnClick(ActionEvent e) {
+        JButton btn = (JButton)e.getSource();
+        //Dividir con coma (,) para saber cuales son las coordenadas en las filas y columnas
+        String[] coordenada = btn.getName().split(",");
+        int posFila = Integer.parseInt(coordenada[0]);
+        int posColumna = Integer.parseInt(coordenada[1]);
+        //Invocar que alguna casilla ha sido seleccionada
+        JOptionPane.showMessageDialog(rootPane, posFila + "," + posColumna);
     }
 
     /**

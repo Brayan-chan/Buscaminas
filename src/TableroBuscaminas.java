@@ -169,4 +169,8 @@ public class TableroBuscaminas {
     public void setEventoPartidaGanada(Consumer<List<Casilla>> eventoPartidaGanada) {
         this.eventoPartidaGanada = eventoPartidaGanada;
     }
+
+    public int getScore() {
+        return numCasillasAbiertas;
+    }
 }

@@ -149,6 +149,8 @@ public class FrmJuego extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        menuScore = new javax.swing.JMenuItem();
+        menuJugador = new javax.swing.JMenuItem();
         menuNuevoJuego = new javax.swing.JMenuItem();
         menuTamano = new javax.swing.JMenuItem();
         menuNumMinas = new javax.swing.JMenuItem();
@@ -159,7 +161,23 @@ public class FrmJuego extends javax.swing.JFrame {
 
         jMenu1.setText("Juego");
 
-        menuNuevoJuego.setText("Nuevo");
+        menuJugador.setText("Nombre Jugador");
+        menuJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuJugadorActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuJugador);
+
+        menuScore.setText("Score");
+        menuScore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuScoreActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuScore);
+
+        menuNuevoJuego.setText("Generar Juego Nuevo");
         menuNuevoJuego.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuNuevoJuegoActionPerformed(evt);
@@ -200,6 +218,18 @@ public class FrmJuego extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuJugadorActionPerformed
+        String nombre = JOptionPane.showInputDialog("Digite el nombre del jugador");
+        this.setTitle("Buscaminas - " + nombre);
+        this.menuJugador.setText("Jugador: " + nombre);
+    }
+    
+    private void menuScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuScoreActionPerformed
+        int score = tableroBuscaminas.getScore();
+        //JOptionPane.showMessageDialog(rootPane, "Score: " + score);
+        this.menuScore.setText("Score: " + score);
+    }//GEN-LAST:event_menuScoreActionPerformed
 
     private void menuNuevoJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoJuegoActionPerformed
         juegoNuevo();
@@ -257,8 +287,10 @@ public class FrmJuego extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem menuJugador;
     private javax.swing.JMenuItem menuNuevoJuego;
     private javax.swing.JMenuItem menuNumMinas;
     private javax.swing.JMenuItem menuTamano;
+    private javax.swing.JMenuItem menuScore;
     // End of variables declaration//GEN-END:variables
 }

@@ -227,7 +227,7 @@ public class FrmJuego extends javax.swing.JFrame {
     
     private void menuScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuScoreActionPerformed
         int score = tableroBuscaminas.getScore();
-        //JOptionPane.showMessageDialog(rootPane, "Score: " + score);
+        JOptionPane.showMessageDialog(rootPane, "Score: " + score);
         this.menuScore.setText("Score: " + score);
     }//GEN-LAST:event_menuScoreActionPerformed
 

@@ -64,6 +64,7 @@ public class TableroBuscaminas {
     }
 
     private void imprimirPistas() {
+        System.out.println("Pistas: ");
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[i].length; j++) {
                 System.out.print(casillas[i][j].getNumMinasAlrededor());
